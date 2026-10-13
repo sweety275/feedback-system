@@ -1,19 +1,20 @@
+
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
 const Feedback = require("./models/Feedback");
+
+const PORT = process.env.PORT || 3000;
+
+
 app.use(express.json());
 app.use(express.static("public"));
 
 
-
-
 app.post("/feedback", async (req, res) => {
-
     try {
-
         const feedback = new Feedback({
             name: req.body.name,
             rating: req.body.rating,
@@ -25,10 +26,8 @@ app.post("/feedback", async (req, res) => {
         res.json({
             message: "Feedback saved successfully"
         });
-
     } catch (error) {
-
-        console.log(error);
+        console.error("Error saving feedback:", error);
 
         res.status(500).json({
             message: "Error saving feedback"
@@ -37,18 +36,13 @@ app.post("/feedback", async (req, res) => {
 });
 
 
-
 app.get("/feedback", async (req, res) => {
-
     try {
-
         const feedback = await Feedback.find();
 
         res.json(feedback);
-
     } catch (error) {
-
-        console.log(error);
+        console.error("Error getting feedback:", error);
 
         res.status(500).json({
             message: "Error getting feedback"
@@ -59,17 +53,13 @@ app.get("/feedback", async (req, res) => {
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
-
         console.log("MongoDB connected successfully");
 
-        app.listen(process.env.PORT || 3000, () => {
-            console.log("Server running on port 3000");
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
         });
-
     })
     .catch((error) => {
-
-        console.log("MongoDB connection failed");
-        console.log(error);
-
+        console.error("MongoDB connection failed:", error);
+        process.exit(1);
     });
