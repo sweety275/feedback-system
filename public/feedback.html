@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Feedback | FeedbackHub</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="brand">
+            <span class="brand-icon">F</span>
+            <span>Feedback<span class="brand-accent">Hub</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/feedback.html" class="nav-link active">All Feedback</a>
+        </div>
+
+        <a href="/" class="nav-button">Write Feedback ↗</a>
+    </nav>
+
+    <main class="all-feedback-page">
+        <section class="list-hero">
+            <span class="eyebrow">
+                <span class="status-dot"></span>
+                STUDENT COMMUNITY
+            </span>
+
+            <h1>Every voice tells a story.</h1>
+
+            <p>Explore what students are saying and discover ideas that help our community grow.</p>
+
+            <div class="list-hero-actions">
+                <a href="/" class="primary-link">+ Write feedback</a>
+                <span class="live-label">
+                    <span class="status-dot"></span>
+                    Community feedback
+                </span>
+            </div>
+        </section>
+
+        <section class="list-summary">
+            <div>
+                <span class="section-kicker">COMMUNITY VOICES</span>
+                <h2>Student feedback</h2>
+                <p>Honest thoughts. Real experiences. Shared growth.</p>
+            </div>
+
+            <a href="/" class="secondary-link">← Back to home</a>
+        </section>
+
+        <div id="feedbackList" class="feedback-list">
+            <div class="loading-card">Loading feedback...</div>
+        </div>
+
+        <section class="bottom-banner list-banner">
+            <div>
+                <span class="section-kicker">HAVE SOMETHING TO SHARE?</span>
+                <h2>Your voice belongs here.</h2>
+                <p>Help make the student experience better for everyone.</p>
+            </div>
+            <a href="/" class="banner-button">Share feedback ↗</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="/" class="brand footer-brand">
+            <span class="brand-icon">F</span>
+            <span>Feedback<span class="brand-accent">Hub</span></span>
+        </a>
+        <p>Built for students. Improved by feedback.</p>
+        <a href="/">Back to home →</a>
+    </footer>
+
+    <script>
+        async function getFeedback() {
+            const list = document.getElementById("feedbackList");
+
+            try {
+                const response = await fetch("/feedback");
+
+                if (!response.ok) {
+                    throw new Error("Unable to fetch feedback");
+                }
+
+                const feedback = await response.json();
+                list.replaceChildren();
+
+                if (!Array.isArray(feedback) || feedback.length === 0) {
+                    const empty = document.createElement("div");
+                    empty.className = "empty-state";
+                    empty.innerHTML = `
+                        <div class="empty-icon">✎</div>
+                        <h3>No feedback yet</h3>
+                        <p>Be the first to share your experience.</p>
+                        <a href="/" class="primary-link">Write the first feedback →</a>
+                    `;
+                    list.appendChild(empty);
+                    return;
+                }
+
+                feedback.forEach((item) => {
+                    const card = document.createElement("article");
+                    card.className = "feedback-item";
+
+                    const avatar = document.createElement("div");
+                    avatar.className = "feedback-avatar";
+                    avatar.textContent = (item.name || "S").trim().charAt(0).toUpperCase();
+
+                    const details = document.createElement("div");
+                    details.className = "feedback-details";
+
+                    const header = document.createElement("div");
+                    header.className = "feedback-item-header";
+
+                    const name = document.createElement("h3");
+                    name.textContent = item.name || "Anonymous student";
+
+                    const rating = document.createElement("span");
+                    rating.className = "rating-badge";
+                    const score = Math.min(5, Math.max(0, Number(item.rating) || 0));
+                    rating.textContent = "★ " + score + "/5";
+
+                    header.append(name, rating);
+
+                    const comment = document.createElement("p");
+                    comment.className = "feedback-comment";
+                    comment.textContent = item.comment || "No comment provided.";
+
+                    const label = document.createElement("span");
+                    label.className = "feedback-tag";
+                    label.textContent = "Student feedback";
+
+                    details.append(header, comment, label);
+                    card.append(avatar, details);
+                    list.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error(error);
+
+                list.replaceChildren();
+
+                const message = document.createElement("p");
+                message.className = "empty-state";
+                message.textContent = "Unable to load feedback. Please try again later.";
+                list.appendChild(message);
+            }
+        }
+
+        getFeedback();
+    </script>
+</body>
+</html>

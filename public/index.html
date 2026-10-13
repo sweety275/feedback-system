@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedbackHub | Student Feedback</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="/" class="brand">
+            <span class="brand-icon">F</span>
+            <span>Feedback<span class="brand-accent">Hub</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="/" class="nav-link active">Home</a>
+            <a href="/feedback.html" class="nav-link">All Feedback</a>
+        </div>
+
+        <a href="#feedbackForm" class="nav-button">Share Feedback ↗</a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">
+                    <span class="status-dot"></span>
+                    STUDENT COMMUNITY
+                </span>
+
+                <h1>Your voice.<br>
+                    <span class="gradient-text">Our improvement.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Every opinion matters. Share your learning experience
+                    and help us create a better environment for every student.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#feedbackForm" class="primary-link">
+                        Share your feedback <span>→</span>
+                    </a>
+                    <a href="/feedback.html" class="secondary-link">
+                        Explore feedback
+                    </a>
+                </div>
+
+                <div class="hero-trust">
+                    <span class="trust-icon">✓</span>
+                    Your voice matters
+                    <span class="trust-separator">·</span>
+                    Simple and quick
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-glow"></div>
+
+                <div class="floating-card floating-top">
+                    <span class="floating-icon">✦</span>
+                    <div>
+                        <strong>Every voice counts</strong>
+                        <small>Make a difference</small>
+                    </div>
+                </div>
+
+                <div class="illustration-card">
+                    <div class="illustration-header">
+                        <span class="mini-logo">F</span>
+                        <span class="live-label">
+                            <span class="status-dot"></span>
+                            FEEDBACK SPACE
+                        </span>
+                    </div>
+
+                    <div class="quote-mark">“</div>
+                    <h3>Great things happen when we listen.</h3>
+                    <p>Good feedback helps everyone grow together.</p>
+
+                    <div class="rating-preview">
+                        <span class="rating-stars">★★★★★</span>
+                        <span>Every opinion matters</span>
+                    </div>
+
+                    <div class="illustration-bottom">
+                        <span class="avatar avatar-one">S</span>
+                        <span class="avatar avatar-two">A</span>
+                        <span class="avatar avatar-three">R</span>
+                        <span class="avatar-caption">Student voices, one community</span>
+                    </div>
+                </div>
+
+                <div class="floating-card floating-bottom">
+                    <span class="success-icon">✓</span>
+                    <div>
+                        <strong>Make it count</strong>
+                        <small>Share your thoughts</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <div class="stat-icon purple-icon">✎</div>
+                <div>
+                    <p class="stat-label">YOUR CONTRIBUTION</p>
+                    <h2>One voice</h2>
+                    <p class="stat-note">Can inspire change</p>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon blue-icon">★</div>
+                <div>
+                    <p class="stat-label">YOUR EXPERIENCE</p>
+                    <h2>1–5 rating</h2>
+                    <p class="stat-note">Rate your experience</p>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <div class="stat-icon green-icon">↗</div>
+                <div>
+                    <p class="stat-label">OUR SHARED GOAL</p>
+                    <h2>Better learning</h2>
+                    <p class="stat-note">Grow together</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="feedback-section" id="feedbackForm">
+            <div class="section-heading">
+                <div>
+                    <span class="section-kicker">WE'RE LISTENING</span>
+                    <h2>Share your experience</h2>
+                    <p>Tell us what's working and what we can improve.</p>
+                </div>
+                <div class="private-note">
+                    <span>✦</span> Your feedback counts
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="form-card">
+                    <div class="card-heading">
+                        <div class="heading-icon">✎</div>
+                        <div>
+                            <h3>Write your feedback</h3>
+                            <p>It only takes a moment.</p>
+                        </div>
+                    </div>
+
+                    <form id="feedbackForm">
+                        <div class="field-group">
+                            <label for="name">Your name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your full name"
+                                required
+                            >
+                        </div>
+
+                        <div class="field-group">
+                            <label for="rating">Rate your experience</label>
+                            <div class="rating-input-wrap">
+                                <select id="rating" name="rating" required>
+                                    <option value="" disabled selected>Select a rating</option>
+                                    <option value="5">5 - Excellent</option>
+                                    <option value="4">4 - Very good</option>
+                                    <option value="3">3 - Good</option>
+                                    <option value="2">2 - Needs improvement</option>
+                                    <option value="1">1 - Poor</option>
+                                </select>
+                                <span class="select-star">★</span>
+                            </div>
+                            <small class="field-hint">Choose a rating from 1 to 5.</small>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="comment">Your thoughts</label>
+                            <textarea
+                                id="comment"
+                                name="comment"
+                                placeholder="Tell us about your experience..."
+                                rows="5"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-button">
+                            Submit feedback <span>→</span>
+                        </button>
+
+                        <p class="form-footnote">
+                            ✦ Thank you for helping our community improve.
+                        </p>
+                    </form>
+                </div>
+
+                <aside class="side-column">
+                    <div class="guide-card">
+                        <span class="side-kicker">A QUICK GUIDE</span>
+                        <h3>How are you feeling?</h3>
+                        <p>Use this guide to choose your rating.</p>
+
+                        <div class="rating-guide-row">
+                            <span class="guide-emoji">🤩</span>
+                            <span class="guide-label">Excellent</span>
+                            <span class="guide-score">5/5</span>
+                        </div>
+
+                        <div class="rating-guide-row">
+                            <span class="guide-emoji">😊</span>
+                            <span class="guide-label">Very good</span>
+                            <span class="guide-score">4/5</span>
+                        </div>
+
+                        <div class="rating-guide-row">
+                            <span class="guide-emoji">🙂</span>
+                            <span class="guide-label">Good</span>
+                            <span class="guide-score">3/5</span>
+                        </div>
+
+                        <div class="rating-guide-row">
+                            <span class="guide-emoji">😐</span>
+                            <span class="guide-label">Needs work</span>
+                            <span class="guide-score">2/5</span>
+                        </div>
+
+                        <div class="rating-guide-row">
+                            <span class="guide-emoji">🙁</span>
+                            <span class="guide-label">Poor</span>
+                            <span class="guide-score">1/5</span>
+                        </div>
+                    </div>
+
+                    <div class="community-card">
+                        <div class="community-symbol">✦</div>
+                        <h3>Better together.</h3>
+                        <p>Your honest feedback helps us understand your needs and improve the student experience.</p>
+                        <a href="/feedback.html">See all feedback <span>→</span></a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <section class="bottom-banner">
+            <div>
+                <span class="section-kicker">YOUR OPINION MATTERS</span>
+                <h2>Let's make learning better, together.</h2>
+                <p>Every suggestion is an opportunity to grow.</p>
+            </div>
+            <a href="#feedbackForm" class="banner-button">Share your thoughts ↗</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="/" class="brand footer-brand">
+            <span class="brand-icon">F</span>
+            <span>Feedback<span class="brand-accent">Hub</span></span>
+        </a>
+        <p>Built for students. Improved by feedback.</p>
+        <a href="/feedback.html">View all feedback →</a>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>
